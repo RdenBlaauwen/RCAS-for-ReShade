@@ -25,6 +25,6 @@ Download the zip file from https://github.com/RdenBlaauwen/RCAS-for-ReShade/arch
 
 Runs on Reshade by Crosire.
 
-Copyright (C)2023 Advanced Micro Devices, Inc.
+This shader is a ReShade port of RCAS. Copyright (C)2023 Advanced Micro Devices, Inc.
 
 - Original file: https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/main/sdk/include/FidelityFX/gpu/fsr1/ffx_fsr1.h
