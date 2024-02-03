@@ -28,7 +28,6 @@
 //   - Option to use green as luma instead of the dot product of luma weights. 
 //     This improves performance, but may decrease quality.
 
-#include "shared/lib.fxh"
 #include "ReShadeUI.fxh"
 
 #ifndef ENABLE_NON_STANDARD_FEATURES
@@ -200,8 +199,8 @@ float3 rcasPS(float4 vpos : SV_Position, float2 texcoord : TexCoord) : SV_Target
   #endif
 
   // Min and max of ring.
-  float3 minRGB = Lib::min(b, d, f, h);
-  float3 maxRGB = Lib::max(b, d, f, h);
+  float3 minRGB = min(min(b, d), min(f, h));
+  float3 maxRGB = max(max(b, d), max(f, h));
   // Immediate constants for peak range.
   float2 peakC = float2(1.0, -4.0);
 
@@ -210,7 +209,7 @@ float3 rcasPS(float4 vpos : SV_Position, float2 texcoord : TexCoord) : SV_Target
   float3 hitMin = minRGB * rcp(4.0 * maxRGB);
   float3 hitMax = (peakC.xxx - maxRGB) * rcp(4.0 * minRGB + peakC.yyy);
   float3 lobeRGB = max(-hitMin, hitMax);
-  float lobe = max(-RCAS_LIMIT, min(Lib::max(lobeRGB), 0.0)) * Sharpness;
+  float lobe = max(-RCAS_LIMIT, min(max(lobeRGB.r, max(lobeRGB.g, lobeRGB.b)), 0.0)) * Sharpness;
 
   #if RCAS_DENOISE == 1
     // Apply noise removal.
