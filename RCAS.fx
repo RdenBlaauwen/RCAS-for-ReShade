@@ -50,7 +50,7 @@ uniform int RCASIntroduction <
     "                              approximate real RCAS as much as possible.\n"
     "                              I recommend you try it out though.\n"
     "\n"
-    "----------------------------------- Attention -----------------------------------\n"
+    "------------------------------------ Notice ------------------------------------\n"
     "RCAS was never meant to be used as a stand-alone shader. I decided to do it anyways\n"
     "because (imho) it has excellent results and performance. However, since this shader\n"
     "uses RCAS in a way it was never intended to, I should make clear that any shortcomings\n"
